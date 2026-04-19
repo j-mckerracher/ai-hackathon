@@ -22,6 +22,9 @@
 # TypeScript cache
 *.tsbuildinfo
 
+# Vercel
+.vercel
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
