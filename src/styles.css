@@ -20,7 +20,7 @@
   --sans: 'Syne', sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   background: var(--bg);
@@ -338,7 +338,7 @@ section {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 4rem;
   align-items: start;
   margin-top: 3rem;
@@ -636,7 +636,7 @@ section {
 
 .register-grid {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
   gap: 5rem;
   margin-top: 3rem;
   align-items: start;
@@ -705,7 +705,7 @@ section {
 
 .form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1rem;
 }
 
@@ -881,7 +881,7 @@ select.form-input option { background: #1a1a17; }
 
 .faq-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 1px;
   margin-top: 3rem;
   border: 0.5px solid var(--border-dim);
