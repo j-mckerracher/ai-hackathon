@@ -986,4 +986,48 @@ footer {
   section { padding: 4rem 1.5rem; }
   #hero { padding: 7rem 1.5rem 3rem; }
   .challenge-title { max-width: 100%; }
+
+  /* Reduce challenge card padding */
+  .challenge-card { padding: 1.75rem 1.5rem; }
+
+  /* Hero accent circle — scale down to avoid overflow */
+  .hero-accent-circle {
+    width: 420px;
+    height: 420px;
+    top: -100px;
+    right: -120px;
+  }
+
+  /* Gala highlight wraps gracefully */
+  .gala-highlight { font-size: 0.65rem; }
+
+  /* Footer: left-align on mobile */
+  footer { flex-direction: column; align-items: flex-start; }
+  .footer-text { text-align: left; }
+
+  /* Form panel padding */
+  .form-panel { padding: 2rem 1.25rem; }
+
+  /* Register grid gap */
+  .register-grid { gap: 3rem; }
+}
+
+/* ── SMALL PHONES (≤ 480px) ── */
+@media (max-width: 480px) {
+  .hero-title { font-size: clamp(3.5rem, 18vw, 5rem); }
+  .section-title { font-size: clamp(2.5rem, 10vw, 3rem); }
+  .hero-stats { gap: 1.5rem; }
+  .stat-num { font-size: 2.2rem; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-ghost { text-align: center; }
+  .challenge-card { padding: 1.25rem 1rem; }
+  .challenge-num { font-size: 3.5rem; }
+  .challenge-metrics { gap: 0.5rem; }
+  .timeline-item { gap: 1rem; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .faq-item { padding: 1.5rem; }
+  .hero-accent-circle { display: none; }
+  .judges-desc { font-size: 0.9rem; }
+  footer { padding: 2rem 1.5rem; }
+  .ticker-inner span { padding: 0 1rem; }
 }

@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './nav.css',
 })
 export class Nav {
+  menuOpen = false;
 
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu(): void {
+    this.menuOpen = false;
+  }
 }

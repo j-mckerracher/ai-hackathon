@@ -1,10 +1,19 @@
 <nav>
   <a href="#hero" class="nav-logo">BREACH</a>
-  <ul class="nav-links">
-    <li><a href="#about">Structure</a></li>
-    <li><a href="#challenges">Challenges</a></li>
-    <li><a href="#judges">Judges</a></li>
-    <li><a href="#faq">FAQ</a></li>
+
+  <ul class="nav-links" [class.open]="menuOpen">
+    <li><a href="#about" (click)="closeMenu()">Structure</a></li>
+    <li><a href="#challenges" (click)="closeMenu()">Challenges</a></li>
+    <li><a href="#judges" (click)="closeMenu()">Judges</a></li>
+    <li><a href="#faq" (click)="closeMenu()">FAQ</a></li>
+    <li><a href="#register" class="nav-cta mobile-cta" (click)="closeMenu()">Register Now</a></li>
   </ul>
-  <a href="#register" class="nav-cta">Register Now</a>
+
+  <a href="#register" class="nav-cta desktop-cta">Register Now</a>
+
+  <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
