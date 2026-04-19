@@ -1,0 +1,140 @@
+<section id="register">
+  <div class="section-label">Registration</div>
+  <h2 class="section-title">Assemble<br>Your Team.</h2>
+
+  <div class="register-grid">
+    <div class="register-info">
+      <h3>Who Should Enter</h3>
+      <p>BREACH is open to university students with a serious interest in machine learning security, adversarial AI, or computer security research. No prior competition experience required — only the hunger to find weaknesses that others miss.</p>
+
+      <ul class="eligibility-list">
+        <li>Teams of 1 to 3 students</li>
+        <li>Current enrollment at an accredited university required</li>
+        <li>All majors and disciplines welcome</li>
+        <li>Competitors must be available for the virtual round dates (summer)</li>
+        <li>Finalists must be available for the in-person event at Purdue (late Aug – early Sep)</li>
+        <li>No prior hackathon experience required</li>
+      </ul>
+
+      <h3>What You Get</h3>
+      <p>Access to curated datasets, structured challenge frameworks, mentorship opportunities during the virtual round, and — for finalists — travel support details announced at selection. Beyond prizes, this is a direct line to the people hiring the next generation of AI security researchers.</p>
+
+      <div style="margin-top: 1.5rem; padding: 1.25rem; border: 0.5px solid var(--border-dim); background: rgba(182,255,71,0.03);">
+        <div style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--acid); margin-bottom: 0.5rem;">Kaggle Platform Note</div>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.7; margin: 0;">The virtual round is hosted on Kaggle. Ensure all team members have (or create) Kaggle accounts. Submission details will be sent after registration closes.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="form-panel">
+        <div id="reg-form" [style.display]="submitted ? 'none' : 'block'">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Team Name *</label>
+              <input type="text" class="form-input" [(ngModel)]="teamName" placeholder="e.g., NullPointer">
+            </div>
+            <div class="form-group">
+              <label class="form-label">University *</label>
+              <input type="text" class="form-input" [(ngModel)]="university" placeholder="e.g., Purdue University">
+            </div>
+          </div>
+
+          <div style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--acid); margin-bottom: 1rem;">Team Lead (Member 1) *</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-input" placeholder="First">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" placeholder="Last">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" [(ngModel)]="leadEmail" placeholder="you@university.edu">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kaggle Username</label>
+            <input type="text" class="form-input" placeholder="@kaggle_handle">
+          </div>
+
+          @for (member of members; track member.id) {
+            <div class="member-section">
+              <div class="member-header">Member {{ member.id + 1 }} <span></span></div>
+              <button class="remove-member-btn" (click)="removeMember(member.id)">✕ Remove</button>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-input" placeholder="First">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-input" placeholder="Last">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" placeholder="member@university.edu">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Kaggle Username</label>
+                <input type="text" class="form-input" placeholder="@kaggle_handle">
+              </div>
+            </div>
+          }
+
+          <button
+            class="add-member-btn"
+            (click)="addMember()"
+            [style.opacity]="members.length >= maxMembers ? '0.3' : '1'"
+            [style.cursor]="members.length >= maxMembers ? 'not-allowed' : 'pointer'">
+            + Add Team Member (up to 2 more)
+          </button>
+
+          <div class="form-group">
+            <label class="form-label">Background / Relevant Skills</label>
+            <select class="form-input">
+              <option value="" disabled selected>Select primary background</option>
+              <option>Machine Learning / AI</option>
+              <option>Cybersecurity / InfoSec</option>
+              <option>Software Engineering</option>
+              <option>Data Science / Statistics</option>
+              <option>Computer Vision</option>
+              <option>Other STEM</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">How did you hear about BREACH?</label>
+            <select class="form-input">
+              <option value="" disabled selected>Select one</option>
+              <option>Professor / Faculty</option>
+              <option>Purdue University channels</option>
+              <option>Social Media</option>
+              <option>Friend / Colleague</option>
+              <option>Kaggle / Online Community</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <button
+            class="submit-btn"
+            (click)="submitForm()"
+            [style.background]="submitError ? 'rgba(255,68,68,0.8)' : ''">
+            {{ submitError ? '⚠ COMPLETE REQUIRED FIELDS' : 'SUBMIT REGISTRATION →' }}
+          </button>
+
+          <p class="form-note">
+            * Required fields. By registering, you agree to compete under the BREACH Code of Conduct and academic integrity standards. Registration does not guarantee selection for the in-person final. Finalists will be contacted directly after the virtual round concludes.
+          </p>
+        </div>
+
+        <div class="success-message" [class.show]="submitted">
+          <h3>ACCESS GRANTED</h3>
+          <p>Your registration has been received.<br>Watch your inbox for confirmation and next steps.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
